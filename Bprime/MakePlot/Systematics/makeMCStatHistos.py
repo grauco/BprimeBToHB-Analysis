@@ -7,7 +7,8 @@ usage = 'usage: %prog -l lumi'
 parser = optparse.OptionParser(usage)
 
 #parser.add_option('-l', '--lumi', dest='lumi', type='float', default = '0.20923', help='Luminosity')
-parser.add_option('-c', '--channel', dest='channel', type='string', default = 'semileptonic', help='Channel to analyze: semileptonic or fullhadronic')
+#parser.add_option('-C', '--cat', dest='category', type='string', default = 'cat0', help='category 1, 2, 0')
+parser.add_option('-c', '--channel', dest='channel', type='string', default = 'cat1_singleH', help='Channel to analyze: semileptonic or fullhadronic')
 parser.add_option('-s', '--sys', dest='sys', type='string', default = 'noSys', help='Systematics: noSys, jesUp, jesDown')
 #parser.add_option('-n', '--normData', dest='normData', type='int', default = '0', help='Normalise to data?')
 #parser.add_option('-r', '--resdir', dest='resdir', type='string', default = './', help='res directory')
@@ -52,14 +53,14 @@ tdrstyle.setTDRStyle();
 #settings.update(plots.common.settings)
 #store += plots.common.store
 
-if opt.channel == 'semileptonic':
+if opt.channel == 'cat1_singleH':
     # Add semileptonic specific settings and plots to store
 #    settings.update(plots.semileptonic.settings)
 #    store += plots.semileptonic.store
 
-    outhistos = 'output/sl/histos_lin'
-    outpdfs = 'output/sl/pdfs_lin'
-    outtxt = 'output/sl/txt_lin'
+    outhistos = 'output/singleh/histos'
+    outpdfs = 'output/singleh/pdfs'
+    outtxt = 'output/singleh/txt'
 
 elif opt.channel == 'fullhadronic':
     # Add fullhadronic specific settings and plots to store
@@ -76,7 +77,7 @@ else:
     sys.exit(0)
 
 
-vars = {"metFinal":"", "metFinal_2lep":"CR_TT", "metFinal_met_0btag":"CR_WJets"}
+vars = {"h_bprimemass_SR":""}
 if(opt.channel == "fullhadronic"):
     vars = {"metFinal":"", "metFinal_SR_1lep":"CR_TT", "metFinal_outtop":"CR_QCD", "metFinal_CR5":"CR_VJets", "metFinal_CR6":"CR_WJets", "metFinal_CR7":"CR_ZJets"}
     
